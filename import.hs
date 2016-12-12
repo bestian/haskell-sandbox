@@ -1,12 +1,13 @@
 import Data.List
 import Imp
 
-foo = [1,2,5,4,6,1,6,3,2,9,2]
-ans1 = (sort . sqare) foo
+foo = [1,2,3,5,4,6,0,-5,6,-2,3,4,9,7]
+ans1 = sortSqare foo
 ans2 = (sort . cube) foo
 
 
 main :: IO()
 main = do
+    print $ sort foo
     print $ ans1
     print $ ans2

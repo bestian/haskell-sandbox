@@ -1,10 +1,14 @@
 module Imp 
-( sqare
+( sortSqare
 , cube ) where
 
+import Data.List
 
-sqare :: Num a => [a] -> [a]
-sqare xs = map (\x -> x^2) xs
+
+sortSqare :: (Ord a, Num a) => [a] -> [a]
+sortSqare xs = sort ys
+	where ys = map (\x -> x^2) xs
+
 
 cube :: Num a => [a] -> [a]
 cube xs = map (\x -> x^3) xs
