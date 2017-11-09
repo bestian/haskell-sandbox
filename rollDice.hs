@@ -9,11 +9,11 @@ roll :: IO ()
 roll = do y <- rollDice
           print $ "dice rolled: " ++ show y
           putStrLn $ "再一次嗎？[y]n"
-          c <- getChar
-          if c /= 'n'
+          c <- getLine
+          if c /= "n"
              then roll
              else return ()
 
-main :: IO()
+main :: IO ()
 main = do roll
     
