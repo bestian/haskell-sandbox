@@ -1,3 +1,4 @@
+--七的數環
 module Ring7
 ( Z7(Z)  ) where
 
@@ -10,8 +11,10 @@ instance Num Z7 where
     (+) (Z n) (Z m) = Z (n+m)
     (-) (Z n) (Z m) = Z (n-m)
     (*) (Z n) (Z m) = Z (n*m)
-    abs (Z n) = Z (abs n)
-    signum (Z n) = Z (signum n)
+    abs (Z n) = Z (min (n `mod` 7) ((-n) `mod` 7))
+    signum (Z n) | n `mod` 7 == 0 = Z 0
+                 | n `mod` 7 > 3  = Z (-1)
+                 | otherwise      = Z 1
     fromInteger n = Z (fromInteger n)
     
 instance Enum Z7 where
