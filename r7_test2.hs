@@ -7,5 +7,3 @@ main = do putStrLn $ "今天是星期幾？"
           putStrLn $ "你想算幾天後是星期幾？"
           x <- getLine
           putStrLn $ x ++ "天後是星期" ++ show (Z (read d :: Int) + Z (read x :: Int))
-          
-          
