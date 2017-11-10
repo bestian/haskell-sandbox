@@ -1,6 +1,7 @@
 --因數與質數
 module Factors
-( factors, isPrime) where
+( factors, isPrime,
+    isPerfact) where
 
 
 factors n = getFact n [] [1..m]
@@ -11,3 +12,5 @@ factors n = getFact n [] [1..m]
                           | otherwise    = xs ++ getFact n xs ys
 
 isPrime p = factors p == [1,p]
+
+isPerfact n = (sum . factors) n == 2*n
