@@ -1,8 +1,8 @@
 --統計問題
 module Stat
 ( mean, 
-	sortBy, median,
-	count, mode) where
+    sortBy, median,
+    count, mode) where
 
 --平均數
 mean xs = sum xs / fromIntegral (length xs)
