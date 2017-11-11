@@ -6,7 +6,7 @@ myLength, myHead, myTail, myReverse, myLast, myInit,
 myComposite,
 myZip, myFst, mySnd, myZipWith,
 myRepeat, myCycle, myIterate, myTake,
-mySqrt, 開立方,
+isWhole, mySqrt, 開立方,
 sortBy
 ) where
 
@@ -83,6 +83,9 @@ myTake :: Int -> [a] -> [a]
 myTake _ [] = []
 myTake n (x:xs) | n <= 0     = []
                 | otherwise  = x:myTake (n-1) xs
+
+isWhole :: (RealFrac a) => a -> Bool
+isWhole x = (fromIntegral . floor) x == x
 
 mySqrt :: Double -> Double
 mySqrt n = 逼近法 1 n n
