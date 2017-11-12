@@ -11,6 +11,7 @@ class M2 a where
    area :: a -> Float 
    
 data Shape = Square Float | Rectangle Float Float | Triangle Float Float Float
+    deriving Show
 
 instance Eq Shape where
     (Square a) == (Square b) = a == b
