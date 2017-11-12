@@ -11,7 +11,13 @@ class M2 a where
    area :: a -> Float 
    
 data Shape = Square Float | Rectangle Float Float | Triangle Float Float Float
-     deriving Eq
+
+instance Eq Shape where
+    (Square a) == (Square b) = a == b
+    (Square a) == (Rectangle x y) = a == x && a == y
+    (Rectangle x y) == (Square a) = (Square a) == (Rectangle x y)
+    (Triangle a b c) == (Triangle x y z) = a == x && b == y && c == z
+    _ == _ = False     
      
 instance M2 Shape where
     perimeter (Square a) = 4*a
