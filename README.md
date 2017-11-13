@@ -16,7 +16,7 @@
 
 # 猜數字
 以命令列進入專案目錄，再輸入：
-    cabal update
-    cabal install Random
-    runghc guessNumber.hs
+    ```cabal update```
+    ```cabal install Random```
+    ```runghc guessNumber.hs```
 即可玩猜數字小遊戲
