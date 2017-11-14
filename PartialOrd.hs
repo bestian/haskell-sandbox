@@ -33,10 +33,6 @@ instance Par Integer where
                  | y `mod` x == 0 = Just LT
                  | otherwise         = Nothing
 
-instance Lat Int where
-    inf x y = gcd x y
-    sup x y = lcm x y
-
 instance Lat Integer where
     inf x y = gcd x y
     sup x y = lcm x y
