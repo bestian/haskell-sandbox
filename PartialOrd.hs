@@ -13,9 +13,9 @@ data Point =  P Float Float deriving (Show, Eq)
 
 instance Par Point where
     compareP (P a b) (P c d) | a == c && b == d  = Just EQ
-                                 | a >= c && b >= d  = Just GT
-                                 | a <= c && b <= d  = Just LT
-                                 | otherwise         = Nothing
+                             | a >= c && b >= d  = Just GT
+                             | a <= c && b <= d  = Just LT
+                             | otherwise         = Nothing
 instance Lat Point where
     inf (P a b) (P c d) = P (min a c) (min b d)
     sup (P a b) (P c d) = P (max a c) (max b d)
