@@ -5,7 +5,7 @@ myMap, myFilter,
 myLength, myHead, myTail, myReverse, myLast, myInit,
 myComposite,
 myZip, myFst, mySnd, myZipWith,
-myRepeat, myCycle, myIterate, myTake,
+myRepeat, myCycle, myIterate, myTake, myTakeWhile, myDrop, myDropWhile,
 isWhole, mySqrt, 開立方,
 sortBy
 ) where
@@ -83,6 +83,15 @@ myTake :: Int -> [a] -> [a]
 myTake _ [] = []
 myTake n (x:xs) | n <= 0     = []
                 | otherwise  = x:myTake (n-1) xs
+
+myTakeWhile :: (a -> Bool) -> [a] -> [a]
+myTakeWhile = takeWhile
+
+myDrop :: Int -> [a] -> [a]
+myDrop = drop
+
+myDropWhile :: (a -> Bool) -> [a] -> [a]
+myDropWhile = dropWhile
 
 isWhole :: (RealFrac a) => a -> Bool
 isWhole x = (fromIntegral . floor) x == x
