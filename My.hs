@@ -7,7 +7,8 @@ myComposite,
 myZip, myFst, mySnd, myZipWith,
 myRepeat, myCycle, myIterate, myTake, myTakeWhile, myDrop, myDropWhile,
 isWhole, mySqrt, 開立方,
-sortBy
+sortBy,
+sigma, delta
 ) where
 
 
@@ -117,3 +118,11 @@ sortBy f [] = []
 sortBy f (x:xs) = bs ++ [x] ++ cs
     where bs = sortBy f (filter (\y -> f y < f x) xs)
           cs = sortBy f (filter (\y -> f y >= f x) xs)
+
+
+sigma :: Num a => [a] -> [a]
+sigma xs = map (\k -> (sum . take k) xs) [1..length xs]
+
+delta :: Num a => [a] -> [a]
+delta [] = []
+delta xs = zipWith (subtract) xs (tail xs)
