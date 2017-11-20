@@ -1,6 +1,8 @@
 --七的數環
-module Ring7
+module Ring_7
 ( Z7(Z)  ) where
+
+import Data.Ratio
 
 data Z7 = Z Int
 instance Eq Z7 where
@@ -31,3 +33,10 @@ instance Enum Z7 where
 
 instance Show Z7 where
     show (Z n) = show (n `mod` 7)
+
+instance Fractional Z7 where
+    (Z _) / (Z 0) = error "divided by 0" 
+    (Z a) / (Z b) = (head . filter (\k -> k * (Z b) == (Z a))) [Z 0..Z 6]
+    recip (Z 0) = error "divided by 0" 
+    recip (Z a) = (head . filter (\k -> k * (Z a) == (Z 1))) [Z 0..Z 6]
+    fromRational r = Z ((fromInteger . numerator) r) / Z ((fromInteger . denominator) r)
