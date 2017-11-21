@@ -8,7 +8,8 @@ myZip, myFst, mySnd, myZipWith,
 myRepeat, myCycle, myIterate, myTake, myTakeWhile, myDrop, myDropWhile,
 isWhole, mySqrt, 開立方,
 sortBy,
-sigma, delta
+sigma, delta,
+myEven, myOdd
 ) where
 
 
@@ -128,3 +129,9 @@ sigma xs = map (\k -> (sum . take k) xs) [1..length xs]
 delta :: Num a => [a] -> [a]
 delta [] = []
 delta xs = zipWith (subtract) xs (tail xs)
+
+myEven :: Integral a => a -> Bool
+myEven = even
+
+myOdd :: Integral a => a -> Bool
+myOdd = odd
