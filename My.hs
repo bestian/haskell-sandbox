@@ -86,8 +86,9 @@ myTake n (x:xs) | n <= 0     = []
                 | otherwise  = x:myTake (n-1) xs
 
 myTakeWhile :: (a -> Bool) -> [a] -> [a]
-myTakeWhile (>3) [x:xs]= (/x:xs -> x <= 3 = [])
-                         otherwise = [X] yTakeWhile (>3) [xs]
+myTakeWhile _ [] = []
+myTakeWhile p (x:xs) | p x    = x:myTakeWhile p xs
+                     | otherwise = []
 
 myDrop :: Int -> [a] -> [a]
 myDrop = drop
