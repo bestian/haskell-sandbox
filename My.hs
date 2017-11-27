@@ -90,7 +90,9 @@ myTakeWhile (>3) [x:xs]= (/x:xs -> x <= 3 = [])
                          otherwise = [X] yTakeWhile (>3) [xs]
 
 myDrop :: Int -> [a] -> [a]
-myDrop = drop
+myDrop _ [] = []
+myDrop n (x:xs)  | n <= 0    = x:xs
+                 | otherwise = myDrop (n-1) xs
 
 myDropWhile :: (a -> Bool) -> [a] -> [a]
 myDropWhile = dropWhile
