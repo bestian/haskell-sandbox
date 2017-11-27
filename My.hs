@@ -97,7 +97,9 @@ myDrop n (x:xs)  | n <= 0    = x:xs
                  | otherwise = myDrop (n-1) xs
 
 myDropWhile :: (a -> Bool) -> [a] -> [a]
-myDropWhile = dropWhile
+myDropWhile _ [] = [] 
+myDropWhile p (x:xs) | p x       = myDropWhile p xs
+                     | otherwise = x:xs
 
 isWhole :: (RealFrac a) => a -> Bool
 isWhole x = (fromIntegral . floor) x == x
