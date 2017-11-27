@@ -8,7 +8,8 @@ myZip, myFst, mySnd, myZipWith,
 myRepeat, myCycle, myIterate, myTake, myTakeWhile, myDrop, myDropWhile,
 isWhole, mySqrt, 開立方,
 sortBy,
-sigma, delta
+sigma, delta,
+myEven, myOdd
 ) where
 
 
@@ -86,8 +87,9 @@ myTake n (x:xs) | n <= 0     = []
                 | otherwise  = x:myTake (n-1) xs
 
 myTakeWhile :: (a -> Bool) -> [a] -> [a]
-myTakeWhile (>3) [x:xs]= (/x:xs -> x <= 3 = [])
-                         otherwise = [X] yTakeWhile (>3) [xs]
+myTakeWhile _ [] = []
+myTakeWhile p (x:xs) | p x    = x:myTakeWhile p xs
+                     | otherwise = []
 
 myDrop :: Int -> [a] -> [a]
 myDrop _ [] = []
@@ -129,3 +131,9 @@ sigma xs = map (\k -> (sum . take k) xs) [1..length xs]
 delta :: Num a => [a] -> [a]
 delta [] = []
 delta xs = zipWith (subtract) xs (tail xs)
+
+myEven :: Integral a => a -> Bool
+myEven = even
+
+myOdd :: Integral a => a -> Bool
+myOdd = odd
