@@ -139,3 +139,9 @@ myEven = even
 
 myOdd :: Integral a => a -> Bool
 myOdd = odd
+
+myGcd :: Integral a => a
+myGcd = gcd
+
+myLcm :: Integral a => a
+myLcm = lcm
