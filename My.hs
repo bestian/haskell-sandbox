@@ -5,11 +5,15 @@ myMap, myFilter,
 myLength, myHead, myTail, myReverse, myLast, myInit,
 myComposite,
 myZip, myFst, mySnd, myZipWith,
-myRepeat, myCycle, myIterate, myTake, myTakeWhile, myDrop, myDropWhile,
+myRepeat, myCycle, myIterate, myTake, 
+myTakeWhile, myDrop, myDropWhile,
 isWhole, mySqrt, 開立方,
 sortBy,
 sigma, delta,
-myEven, myOdd
+myEven, myOdd,
+myGcd, myLcm,
+mySum, myProduct, myAll, myAny,
+myFoldl
 ) where
 
 
@@ -139,3 +143,24 @@ myEven n = n `mod` 2 == 0
 
 myOdd :: Integral a => a -> Bool
 myOdd n = n `mod` 2 == 1
+
+myGcd :: Integral a => a -> a -> a
+myGcd = gcd
+
+myLcm :: Integral a => a -> a -> a
+myLcm = lcm
+
+mySum :: Num a => [a] -> a
+mySum = foldl (+) 0
+
+myProduct :: Num a => [a] -> a
+myProduct = product
+
+myAll :: (a -> Bool) -> [a] -> Bool
+myAll p xs = foldl (&&) True (map p xs)
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny = any
+
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl = foldl
