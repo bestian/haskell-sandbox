@@ -135,7 +135,7 @@ delta [] = []
 delta xs = zipWith (subtract) xs (tail xs)
 
 myEven :: Integral a => a -> Bool
-myEven = even
+myEven n = n `mod` 2 == 0
 
 myOdd :: Integral a => a -> Bool
-myOdd = odd
+myOdd n = n `mod` 2 == 1
