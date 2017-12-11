@@ -148,7 +148,7 @@ myGcd :: Integral a => a -> a -> a
 myGcd a b = last $ filter (\k -> a `mod` k == 0 && b `mod` k == 0) [1..min a b]
 
 myLcm :: Integral a => a -> a -> a
-myLcm = myLcm a b = head $ dropWhile (\k -> k `mod` a /= 0 || k `mod` b /= 0) [max a b..]
+myLcm a b = head $ dropWhile (\k -> k `mod` a /= 0 || k `mod` b /= 0) [max a b, 2 * max a b..]
 
 mySum :: Num a => [a] -> a
 mySum = foldl (+) 0
