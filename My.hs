@@ -145,7 +145,7 @@ myOdd :: Integral a => a -> Bool
 myOdd n = n `mod` 2 == 1
 
 myGcd :: Integral a => a -> a -> a
-myGcd = gcd
+myGcd a b = last $ filter (\k -> a `mod` k == 0 && b `mod` k == 0) [1..min a b]
 
 myLcm :: Integral a => a -> a -> a
 myLcm = lcm
