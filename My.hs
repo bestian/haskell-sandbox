@@ -154,7 +154,7 @@ mySum :: Num a => [a] -> a
 mySum = foldl (+) 0
 
 myProduct :: Num a => [a] -> a
-myProduct = product
+myProduct = foldl (*) 1
 
 myAll :: (a -> Bool) -> [a] -> Bool
 myAll p xs = foldl (&&) True (map p xs)
