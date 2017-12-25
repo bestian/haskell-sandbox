@@ -1,9 +1,11 @@
 --題目：https://zerojudge.tw/ShowProblem?problemid=a003
 
+divines = ['普通', '吉', '大吉']
+
 main :: IO()
 main = do
-    putStrLn "請輸入兩個數："
-    n1  <- getLine
-    n2  <- getLine
-    ans <- return $ (read n1 :: Int) + (read n2 :: Int)
-    print ans
+    putStrLn "請輸入月份和日期："
+    m  <- getLine
+    d  <- getLine
+    ans <- return $ (read m :: Int) + (read d :: Int) --改這行
+    print ans --改這行
