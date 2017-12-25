@@ -1,6 +1,6 @@
 --題目：https://zerojudge.tw/ShowProblem?problemid=a003
 
-divines = ['普通', '吉', '大吉']
+divines = ["普通", "吉", "大吉"]
 
 main :: IO()
 main = do
@@ -8,4 +8,4 @@ main = do
     m  <- getLine
     d  <- getLine
     ans <- return $ (read m :: Int) + (read d :: Int) --改這行
-    print ans --改這行
+    putStrLn $ divines !! ans --改這行
