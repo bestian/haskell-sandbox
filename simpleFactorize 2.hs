@@ -10,6 +10,7 @@ primes = filter isPrime [2..1000000]
 
 join :: [Char] -> [[Char]] -> [Char]
 join s [] = []
+join s (x:[]) = x
 join s (x:xs) = x ++ s ++ (join s xs)
 
 showPrime c p | c == 0   = []
@@ -19,7 +20,7 @@ countPrime x p | x `mod` p /= 0  = 0
 
 
 factorize :: Int -> [Char]
-factorize x = init (join "*" $ zipWith showPrime (map (\p -> countPrime x p) myPrimes) myPrimes)
+factorize x = join " * " $ zipWith showPrime (map (\p -> countPrime x p) myPrimes) myPrimes
     where myPrimes = filter (\p -> x `mod` p == 0) (takeWhile (<x) primes)
 
 
