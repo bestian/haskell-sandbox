@@ -7,5 +7,5 @@ main = do
     putStrLn "請輸入月份和日期："
     m  <- getLine
     d  <- getLine
-    ans <- return $ (read m :: Int) + (read d :: Int) --改這行
-    putStrLn $ divines !! ans --改這行
+    ans <- return $ ((read m :: Int) * 2 + (read d :: Int)) `mod` 3
+    putStrLn $ divines !! ans 
