@@ -14,6 +14,7 @@ join s (x:[]) = x
 join s (x:xs) = x ++ s ++ (join s xs)
 
 showPrime c p | c == 0   = []
+              | c == 1 = show p
               | otherwise = show p ++ "^" ++ show c
 countPrime x p | x `mod` p /= 0  = 0
                | otherwise       = 1 + (countPrime (x `div` p) p)
