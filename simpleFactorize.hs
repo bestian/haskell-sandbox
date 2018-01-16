@@ -22,7 +22,7 @@ countPrime x p | x `mod` p /= 0  = 0
 
 factorize :: Int -> [Char]
 factorize x = join " * " $ zipWith showPrime (map (\p -> countPrime x p) myPrimes) myPrimes
-    where myPrimes = filter (\p -> x `mod` p == 0) (takeWhile (<x) primes)
+    where myPrimes = filter (\p -> x `mod` p == 0) (takeWhile (<=x) primes)
 
 
 main :: IO()
