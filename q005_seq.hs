@@ -16,14 +16,28 @@
 1 2 3 4 5
 1 2 4 8 16
 -}
-
-
-
 add5 (a:b:c:xs)  | c - b == b - a = a:b:c:xs ++ [(last xs) + (c - b)]
                  | c `div` b == b `div` a = a:b:c:xs ++ [(last xs) * (c `div` b)]
                  | otherwise = error "不是等差或等比數列"
 
+parse seq = replace ' ' ',' seq
+
+replace c d [] = []
+replace c d (x:xs) | x == c = d:(replace c d xs)
+                   | otherwise = x:(replace c d xs)
+
+showL [] = ""
+showL (x:[]) = show x 
+showL (x:xs) = show x ++ " " ++ showL xs
+
 
 main :: IO()
 main = do
-		 putstrln "請輸入4個數的等差或等比數列"
+    putStrLn "請輸入數列個數："
+    m  <- getLine
+    runSeq (read m :: Int)
+
+runSeq :: IIO()
+main = do putStrLn "請輸入4個數的等差或等比數列"   
+          seq <- getLine
+          print $ showL (add5 (read ("[" ++ parse seq ++ "]") :: [Int]))
