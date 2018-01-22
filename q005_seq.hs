@@ -17,7 +17,13 @@
 1 2 4 8 16
 -}
 
+
+
+add5 (a:b:c:xs)  | c - b == b - a = a:b:c:xs ++ [(last xs) + (c - b)]
+                 | c `div` b == b `div` a = a:b:c:xs ++ [(last xs) * (c `div` b)]
+                 | otherwise = error "不是等差或等比數列"
+
+
 main :: IO()
 main = do
-
-putstrln "請輸入4個數的等差或等比數列"
+		 putstrln "請輸入4個數的等差或等比數列"
