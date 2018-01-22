@@ -20,4 +20,4 @@
 main :: IO()
 main = do
 
-
+putstrln "請輸入4個數的等差或等比數列"
