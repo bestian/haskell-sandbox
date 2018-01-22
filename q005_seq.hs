@@ -37,7 +37,7 @@ main = do
     m  <- getLine
     runSeq (read m :: Int)
 
-runSeq :: IIO()
+runSeq :: Int -> IO()
 main = do putStrLn "請輸入4個數的等差或等比數列"   
           seq <- getLine
           print $ showL (add5 (read ("[" ++ parse seq ++ "]") :: [Int]))
