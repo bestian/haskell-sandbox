@@ -30,6 +30,8 @@ main = do
 
 
 to2 :: Int -> [Char]
-to2 n | n `div` 2 == 0 = show (n `mod` 2)
+to2 n | n == 0  = "0"
+      | n == 1  = "1"
+      | n == 2  = "10"
       | n `mod` 2 == 0 = to2 (n `div` 2)++"0"
       | otherwise = to2 (n `div` 2)++"1"
