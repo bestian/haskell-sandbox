@@ -26,5 +26,25 @@ Case 2: 50
 
 main :: IO()
 main = do
+    putStrLn "請輸入範圍個數："
+    m  <- getLine
+    runIn (read m :: Int)
 
+runIn :: Int -> IO()
+runIn n = do
+    if n == 0
+        then return ()
+        else do
+            putStrLn "請用兩行分別輸入範圍之下限和上限："
+            a <- getLine
+            b <- getLine
+            putStrLn "範圍中的平方數總和為"
+            print $ (sum . filter isSquare) [(read a :: Int) .. (read b :: Int)]
+            runIn (n-1)
 
+isSquare :: Int -> Bool
+isSquare n = (fromIntegral . floor) y == y
+            where y = (sqrt . fromIntegral) n
+ 
+--開根號是整數的數為完全平方數
+--將在a,b範圍 開根號是整數的數(isSquare) 加起來（sum)
