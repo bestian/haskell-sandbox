@@ -164,7 +164,6 @@ myAll p xs = foldl (&&) True (map p xs)
 myAny :: (a -> Bool) -> [a] -> Bool
 myAny p xs = foldl (||) False (map p xs)
 
-
-
 myFoldl :: (b -> a -> b) -> b -> [a] -> b
-myFoldl = foldl
+myFoldl f x [] = x
+myFoldl f x y:ys = myFoldl f (f x y) ys
