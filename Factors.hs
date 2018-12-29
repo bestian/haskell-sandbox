@@ -14,3 +14,13 @@ factors n = getFact n [] [1..m]
 isPrime p = factors p == [1,p]
 
 isPerfact n = (sum . factors) n == 2*n
+
+pf :: Integer -> [Integer]
+pf n | n <= 1      = []
+     | isPrime n   = [n]
+     | otherwise   = p:pf (n `div` p)
+         where primes = filter isPrime [2..(floor . sqrt . fromIntegral) n]
+               pfs = filter (\x -> n `mod` x == 0) primes
+               p = head pfs
+
+
