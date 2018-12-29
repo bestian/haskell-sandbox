@@ -13,7 +13,7 @@ factors n = getFact n [] [1..m]
 
 isPrime p = factors p == [1,p]
 
-isPerfact n = (sum . factors) n == 2*n
+isPerfect n = (sum . factors) n == 2*n
 
 pf :: Integer -> [Integer]
 pf n | n <= 1      = []
