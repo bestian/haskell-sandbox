@@ -1,7 +1,7 @@
 --因數與質數
 module Factors
 ( factors, isPrime,
-    isPerfact) where
+    isPerfect, pf) where
 
 
 factors n = getFact n [] [1..m]
