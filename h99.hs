@@ -159,6 +159,19 @@ combinations 0 _ = [[]]
 combinations _ [] = []
 combinations n (x:xs) = (map (x:) (combinations (n-1) xs)) ++ (combinations n xs)
 
+--Problem 27(跳過)
+--Group the elements of a set into disjoint subsets.
+
+--Problem 28
+--Sorting a list of lists according to length of sublists
+sortBy :: Ord b => (a -> b) -> [a] -> [a]
+sortBy f [] = []
+sortBy f (x:xs) = bs ++ [x] ++ cs
+    where bs = sortBy f (filter (\y -> f y < f x) xs)
+          cs = sortBy f (filter (\y -> f y >= f x) xs)
+
+lsort = sortBy length
+
 main = do print $ myLast [1,2,3,4] == 4
           print $ myButLast [1,2,3,4] == 3
           print $ elementAt [1,2,3] 2 == 2
@@ -190,3 +203,4 @@ main = do print $ myLast [1,2,3,4] == 4
           print b
           print c
           print $ combinations 3 "abcdef"
+          print $ lsort ["abc","de","fgh","de","ijkl","mn","o"] == ["o","de","de","mn","abc","fgh","ijkl"]
