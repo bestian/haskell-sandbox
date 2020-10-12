@@ -182,6 +182,12 @@ isPrime n = factors n == [1, n]
 --Problem 33
 --(*) Determine whether two positive integer numbers are coprime. Two numbers are coprime if their greatest common divisor equals 1.
 
+myGcd a b | a  == 0   = b
+          | b  == 0   = a
+          | a > b     =  myGcd b (a `mod` b)
+          | a < b     =  myGcd a (b `mod` a)
+          | otherwise =  a
+
 coprime a b = myGcd a b == 1
 
 --Problem 34
@@ -200,11 +206,18 @@ primeFactors 1 = []
 primeFactors x = p : primeFactors (x `div` p)
   where p = head (primesUnder x)
 
-myGcd a b | a  == 0   = b
-          | b  == 0   = a
-          | a > b     =  myGcd b (a `mod` b)
-          | a < b     =  myGcd a (b `mod` a)
-          | otherwise =  a
+--Problem 36
+--(**) Determine the prime factors of a given positive integer.
+--Construct a list containing the prime factors and their multiplicity.
+
+power p n | n `mod` p /= 0   = 0
+          | otherwise        = 1 + power p (n `div` p)
+
+pf1 n = filter isPrime (factors n)
+pf2 n = map (\p -> power p n) (pf1 n)
+
+prime_factors_mult n = zip (pf1 n) (pf2 n)
+
 
 
 main = do print $ myLast [1,2,3,4] == 4
