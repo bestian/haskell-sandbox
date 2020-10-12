@@ -172,6 +172,41 @@ sortBy f (x:xs) = bs ++ [x] ++ cs
 
 lsort = sortBy length
 
+
+--Problem 31
+--(**) Determine whether a given integer number is prime.
+
+factors n = filter (\x -> n `mod` x == 0) [1..n]
+isPrime n = factors n == [1, n]
+
+--Problem 33
+--(*) Determine whether two positive integer numbers are coprime. Two numbers are coprime if their greatest common divisor equals 1.
+
+coprime a b = myGcd a b == 1
+
+--Problem 34
+-- (**) Calculate Euler's totient function phi(m).
+
+totient x | x == 1    = 1
+          | otherwise = length $ filter (\k -> coprime k x) [1..x-1]
+
+
+--Problem 35
+--(**) Determine the prime factors of a given positive integer. Construct a flat list containing the prime factors in ascending order.
+
+primesUnder x = filter (\p -> isPrime p && x `mod` p == 0) [1..x]
+
+primeFactors 1 = []
+primeFactors x = p : primeFactors (x `div` p)
+  where p = head (primesUnder x)
+
+myGcd a b | a  == 0   = b
+          | b  == 0   = a
+          | a > b     =  myGcd b (a `mod` b)
+          | a < b     =  myGcd a (b `mod` a)
+          | otherwise =  a
+
+
 main = do print $ myLast [1,2,3,4] == 4
           print $ myButLast [1,2,3,4] == 3
           print $ elementAt [1,2,3] 2 == 2
@@ -204,3 +239,4 @@ main = do print $ myLast [1,2,3,4] == 4
           print c
           print $ combinations 3 "abcdef"
           print $ lsort ["abc","de","fgh","de","ijkl","mn","o"] == ["o","de","de","mn","abc","fgh","ijkl"]
+          print $ myGcd 24 36
