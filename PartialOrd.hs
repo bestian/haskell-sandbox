@@ -3,8 +3,9 @@ module PartialOrd
 (OrderingP, Par, Point(P), Lat, (>~), (<~) ) where
 
 type OrderingP = Maybe Ordering
-class Par a where
+class (Eq a) => Par a where
     compareP :: a -> a -> OrderingP
+    
 class (Par a) => Lat a where
     inf :: a -> a -> a
     sup :: a -> a -> a
